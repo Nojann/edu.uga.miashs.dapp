@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>edu.uga.miashs.dapp</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-	</natures>
+    <buildSpec>
+        <buildCommand>
+            <name>edu.uga.miashs.dapp</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
+    </buildSpec>
+    <natures>
+        <nature>edu.uga.miashs.dapp</nature>
+    </natures>
 </projectDescription>
