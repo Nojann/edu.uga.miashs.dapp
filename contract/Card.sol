@@ -3,7 +3,6 @@ pragma solidity ^0.4.23;
 contract Card {
 
 address cardOwner;
-string name;
 
 uint8 backgroundRed;
 uint8 backgroundGreen;
@@ -23,7 +22,7 @@ uint8[16] coordinates;
 
 
 //Statut public à chnger ? Ne permerttre qu'au bookmaker de créer une carte
-   constructor(uint8 _backgroundRed, uint8 _backgroundGreen, uint8 _backgroundBlue, uint8 _polygonRed, uint8 _polygonGreen, uint8 _polygonBlue, uint8[16] _coordinates) public {
+constructor(uint8 _backgroundRed, uint8 _backgroundGreen, uint8 _backgroundBlue, uint8 _polygonRed, uint8 _polygonGreen, uint8 _polygonBlue, uint8[16] _coordinates, address _owner) public {
         
 backgroundRed = _backgroundRed;
 backgroundGreen = _backgroundGreen;
@@ -35,11 +34,7 @@ polygonBlue = _polygonBlue;
 
 coordinates = _coordinates;
 
-
-//uint8[2] _coordinate1, uint8[2] _coordinate2, uint8[2] _coordinate3, uint8[2] _coordinate4, uint8[2] _coordinate5, uint8[2] _coordinate6, uint8[2] _coordinate7, uint8[2] _coordinate8,
-   //address _owner
-
-//cardOwner = _owner;
+cardOwner = _owner;
 }
     
     function getBackgroundRed()  public constant returns (uint8) {
@@ -64,6 +59,10 @@ coordinates = _coordinates;
     
     function getPolygonBlue()  public constant returns (uint8) {
         return polygonBlue;
+    }
+    
+    function getCoordinates() public constant returns (uint8[16]) {
+        return coordinates;
     }
     
     function getAddressID() public constant returns (address) {
