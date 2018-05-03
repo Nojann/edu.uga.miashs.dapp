@@ -13,23 +13,17 @@ uint8 polygonRed;
 uint8 polygonGreen;
 uint8 polygonBlue;
 
-//Premier point en haut à gauche, dans le sens des aiguille du montre
-//x et y
-//memory or storage : http://solidity.readthedocs.io/en/v0.4.21/types.html?highlight=memory
+/*
+-Premier point en haut à gauche, dans le sens des aiguille du montre
+-x et y
+-8 points
+*/
 
-uint8[2] coordinate1;
-uint8[2] coordinate2;
-uint8[2] coordinate3;
-uint8[2] coordinate4;
-uint8[2] coordinate5;
-uint8[2] coordinate6;
-uint8[2] coordinate7;
-uint8[2] coordinate8;
+uint8[16] coordinates;
+
 
 //Statut public à chnger ? Ne permerttre qu'au bookmaker de créer une carte
-   constructor(uint8 _backgroundRed, uint8 _backgroundGreen, uint8 _backgroundBlue, uint8 _polygonRed, uint8 _polygonGreen, uint8 _polygonBlue, 
-   uint8[2] _coordinate1, uint8[2] _coordinate2, uint8[2] _coordinate3, uint8[2] _coordinate4, uint8[2] _coordinate5, uint8[2] _coordinate6, uint8[2] _coordinate7, uint8[2] _coordinate8,
-   address _owner) public {
+   constructor(uint8 _backgroundRed, uint8 _backgroundGreen, uint8 _backgroundBlue, uint8 _polygonRed, uint8 _polygonGreen, uint8 _polygonBlue, uint8[16] _coordinates) public {
         
 backgroundRed = _backgroundRed;
 backgroundGreen = _backgroundGreen;
@@ -39,16 +33,13 @@ polygonRed = _polygonRed;
 polygonGreen = _polygonGreen;
 polygonBlue = _polygonBlue;
 
-coordinate1 = _coordinate1;
-coordinate2 = _coordinate2;
-coordinate3 = _coordinate3;
-coordinate4 = _coordinate4;
-coordinate5 = _coordinate5;
-coordinate6 = _coordinate6;
-coordinate7 = _coordinate7;
-coordinate8 = _coordinate8;
+coordinates = _coordinates;
 
-cardOwner = _owner;
+
+//uint8[2] _coordinate1, uint8[2] _coordinate2, uint8[2] _coordinate3, uint8[2] _coordinate4, uint8[2] _coordinate5, uint8[2] _coordinate6, uint8[2] _coordinate7, uint8[2] _coordinate8,
+   //address _owner
+
+//cardOwner = _owner;
 }
     
     function getBackgroundRed()  public constant returns (uint8) {
