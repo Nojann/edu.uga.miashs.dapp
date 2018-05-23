@@ -15,21 +15,23 @@ contract Fight {
         bookmaker = _bookmaker;
     }
     
-    function challengeAccepted(address _approver, Card _card) internal{
+    function challengeAccepted(address _approver, Card _card) external{
         bool exist = bookmaker.cardExist(_card);
-        if(approver == address(0) && exist) {
+        bool isNotFighting = bookmaker.fighterIsFighting(_approver);
+        if( isNotFighting && approver == address(0) && exist) {
             approver = _approver;
             approverCard = _card;
+            address winner;
             //TODO: faire le combat et généré la carte
-            fight();
-            //generation d'une carte
-            
+            fight(winner);
+            //generation d'une cart
+            bookmaker.generatCardToWinner(winner);
         }
-        else()
     }
     
-    function fight() private pure {
-        //algo de combat
+    function fight(address _winner) private view{
+        //TODO: algo de combat
+        _winner = provoker;
         
     }
 }
