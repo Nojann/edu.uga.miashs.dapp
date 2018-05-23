@@ -45,6 +45,9 @@ public class LinkEthereum {
 		
 	}
 	
+	public Web3j getWeb3j() {
+		return web3j;
+	}
 	
 	
 }
