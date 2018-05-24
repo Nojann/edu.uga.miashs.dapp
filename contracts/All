@@ -5,19 +5,25 @@ contract Bookmaker{
         mapping(address => bool) private listOfFighters; //player adresse, if he fight or not.
         Fight[] private allFights;  // all available fights.
         uint private indexLastFight = 0; //TODO: Géré la taille du tableau
-        
+        mapping(address => bool) private listOfFight;
+	
         mapping(address=>bool) private allCards;
         
         function newFight(Card _card) external{
             if(listOfFighters[msg.sender] == false && allCards[_card] == true) {
                 Fight f = new Fight(msg.sender, _card, this);
                 allFights.push(f);
+		listOfFight(f) = true; //A regarder ci truc.
                 indexLastFight = 0;
             }
         }
         
         function generateNewCard(address winner, Card provokerCard, Card approverCard) private {   
             
+	    if(listOfFight(msg.sender) == true) {
+	    	//TODO: Le code ici!
+	    }
+	    
             //generation d'une nouvelle carte
             uint8 backgroundRed = ((provokerCard.getBackgroundRed()+1)*(approverCard.getBackgroundRed()+1))%255;
             uint8 backgroundGreen = ((provokerCard.getBackgroundGreen()+1)*(approverCard.getBackgroundGreen()+1))%255;
