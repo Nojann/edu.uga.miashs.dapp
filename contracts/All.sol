@@ -5,22 +5,33 @@ contract Bookmaker{
         mapping(address => bool) private listOfFighters; //player adresse, if he fight or not.
         Fight[] private allFights;  // all available fights.
         uint private indexLastFight = 0; //TODO: Géré la taille du tableau
-        
+        mapping(address => bool) private listOfFight;
+	
         mapping(address=>bool) private allCards;
         
         function newFight(Card _card) external{
             if(listOfFighters[msg.sender] == false && allCards[_card] == true) {
                 Fight f = new Fight(msg.sender, _card, this);
                 allFights.push(f);
+		listOfFight(f) = true; //A regarder ci truc.
                 indexLastFight = 0;
             }
         }
         
+<<<<<<< HEAD:contracts/All.sol
         //Attention à sécuriser !
         function generateNewCard(address win, Card provokerCard, Card approverCard) external returns (Card) {   
         
         //Parcours les Fight[] // TODO
         
+=======
+        function generateNewCard(address winner, Card provokerCard, Card approverCard) private {   
+            
+	    if(listOfFight(msg.sender) == true) {
+	    	//TODO: Le code ici!
+	    }
+	    
+>>>>>>> af4e9c4e240a9c42c764a30b9640d577343232d0:contracts/All
             //generation d'une nouvelle carte
             uint8 _backgroundRed = ((provokerCard.getBackgroundRed()+1)*(approverCard.getBackgroundRed()+1))%255;
             uint8 _backgroundGreen = ((provokerCard.getBackgroundGreen()+1)*(approverCard.getBackgroundGreen()+1))%255;
