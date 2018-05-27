@@ -18,7 +18,7 @@ public class FightButton extends Button{
 		this.setPrefSize(ComponentsSize.getComponentSize().getAppWidthHalfSize(), Control.USE_COMPUTED_SIZE);
 		this.setMaxSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
 		this.setMinSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
-		this.setText("Card ID : " + this.fight.getCardID() + "\t Price : " + this.fight.getBet());
+		this.setText("Card name : " + this.fight.getCard().getName() + "\t Bet : " + this.fight.getBet());
 		this.setAlignment(Pos.BASELINE_LEFT);
 		
 	}

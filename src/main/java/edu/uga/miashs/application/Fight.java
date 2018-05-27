@@ -3,17 +3,17 @@ package main.java.edu.uga.miashs.application;
 public class Fight {
 	
 	private String id;
-	private String cardID;
+	private Card card;
 	private int bet;
 
-	public Fight(String id, String cardID, int bet) {
+	public Fight(String id, Card card, int bet) {
 		this.id = id;
-		this.cardID = cardID;
+		this.card = card;
 		this.bet = bet;
 	}
 	
-	public Fight(String cardID, int price) {
-		this.cardID = cardID;
+	public Fight(Card card, int price) {
+		this.card = card;
 		this.bet = price;
 	}
 
@@ -21,8 +21,8 @@ public class Fight {
 		return id;
 	}
 
-	public String getCardID() {
-		return cardID;
+	public Card getCard() {
+		return card;
 	}
 
 	public int getBet() {

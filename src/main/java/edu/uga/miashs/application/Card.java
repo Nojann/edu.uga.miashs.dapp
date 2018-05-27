@@ -5,30 +5,51 @@ import javafx.scene.image.Image;
 public class Card {
 	private String id;
 	private String name;
-	private Image img;
+	private int[] rgbBGColor;
+	private int[] rgbINColor;
 	
-	public Card(String id, String name, Image img) {
+	public Card(String id, String name, int bgColorRed, int bgColorGreen, int bgColorBlue,
+			int inColorRed, int inColorGreen, int inColorBlue) {
 		this.id = id;
 		this.name = name;
-		this.img = img;
+		this.rgbBGColor = new int[3];
+		this.rgbBGColor[0] = bgColorRed;
+		this.rgbBGColor[1] = bgColorGreen;
+		this.rgbBGColor[2] = bgColorBlue;
+		
+		this.rgbINColor = new int[3];
+		this.rgbINColor[0] = inColorRed;
+		this.rgbINColor[1] = inColorGreen;
+		this.rgbINColor[2] = inColorBlue;
 	}
 	
-	public Card(String id, String name) {
+	public Card(String id, String name, int[] bgColor, int[] inColor) {
 		this.id = id;
 		this.name = name;
+		this.rgbBGColor = bgColor;
+		this.rgbINColor = inColor;
 	}
+	
+//	public Card(String id, String name) {
+//		this.id = id;
+//		this.name = name;
+//	}
 
 	
 	
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
-	public Image getImg() {
-		return img;
+	public int[] getRGBBGColor() {
+		return this.rgbBGColor;
+	}
+	
+	public int[] getRGBINColor() {
+		return this.rgbINColor;
 	}
 }

@@ -20,7 +20,7 @@ public class TradeButton extends Button{
 		this.setPrefSize(ComponentsSize.getComponentSize().getAppWidthHalfSize(), Control.USE_COMPUTED_SIZE);
 		this.setMaxSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
 		this.setMinSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
-		this.setText("ID : " + this.trade.getCardID() + "\t Price : " + this.trade.getPrice());
+		this.setText("name : " + this.trade.getCard().getName() + "\t Price : " + this.trade.getPrice());
 		this.setAlignment(Pos.BASELINE_LEFT);
 		
 	}

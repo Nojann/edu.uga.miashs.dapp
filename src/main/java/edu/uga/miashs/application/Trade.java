@@ -2,17 +2,17 @@ package main.java.edu.uga.miashs.application;
 
 public class Trade {
 	private String id;
-	private String cardID;
 	private int price;
+	private Card card;
 	
-	public Trade(String id, String cardID, int price) {
+	public Trade(String id, Card card, int price) {
 		this.id = id;
-		this.cardID = cardID;
+		this.card = card;
 		this.price = price;
 	}
 	
-	public Trade(String cardID, int price) {
-		this.cardID = cardID;
+	public Trade(Card card, int price) {
+		this.card = card;
 		this.price = price;
 	}
 
@@ -20,8 +20,8 @@ public class Trade {
 		return id;
 	}
 
-	public String getCardID() {
-		return cardID;
+	public Card getCard() {
+		return this.card;
 	}
 
 	public int getPrice() {
