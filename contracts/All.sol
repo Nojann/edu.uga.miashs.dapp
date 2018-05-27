@@ -16,24 +16,31 @@ contract Bookmaker{
             }
         }
         
-        function generateNewCard(address winner, Card provokerCard, Card approverCard) private {   
-            
+        //Attention à sécuriser !
+        function generateNewCard(address win, Card provokerCard, Card approverCard) external returns (Card) {   
+        
+        //Parcours les Fight[] // TODO
+        
             //generation d'une nouvelle carte
-            uint8 backgroundRed = ((provokerCard.getBackgroundRed()+1)*(approverCard.getBackgroundRed()+1))%255;
-            uint8 backgroundGreen = ((provokerCard.getBackgroundGreen()+1)*(approverCard.getBackgroundGreen()+1))%255;
-            uint8 backgroundBlue = ((provokerCard.getBackgroundBlue()+1)*(approverCard.getBackgroundBlue()+1))%255;
-            uint8 polygonRed = ((provokerCard.getPolygonRed()+1)*(approverCard.getPolygonGreen()+1))%255;
-            uint8 polygonGreen = ((provokerCard.getPolygonGreen()+1)*(approverCard.getPolygonBlue()+1))%255;
-            uint8 polygonBlue = ((provokerCard.getPolygonBlue()+1)*(approverCard.getPolygonRed()+1))%255;
+            uint8 _backgroundRed = ((provokerCard.getBackgroundRed()+1)*(approverCard.getBackgroundRed()+1))%255;
+            uint8 _backgroundGreen = ((provokerCard.getBackgroundGreen()+1)*(approverCard.getBackgroundGreen()+1))%255;
+            uint8 _backgroundBlue = ((provokerCard.getBackgroundBlue()+1)*(approverCard.getBackgroundBlue()+1))%255;
+            uint8 _polygonRed = ((provokerCard.getPolygonRed()+1)*(approverCard.getPolygonGreen()+1))%255;
+            uint8 _polygonGreen = ((provokerCard.getPolygonGreen()+1)*(approverCard.getPolygonBlue()+1))%255;
+            uint8 _polygonBlue = ((provokerCard.getPolygonBlue()+1)*(approverCard.getPolygonRed()+1))%255;
             
-            uint8[16] coordinates;
+            address winner = win;
+            
+            uint8[16] memory _coordinates;
 
             for(uint8 i; i<16; i++){
-                coordinates[i]=(provokerCard.getPolygonGreen()+1)*(approverCard.getPolygonRed()+1)%255;
+                _coordinates[i]=(provokerCard.getPolygonGreen()+1)*(approverCard.getPolygonRed()+1)%255;
             }
             
-            Card newCard = new Card(backgroundRed, backgroundGreen, backgroundBlue, polygonRed, polygonGreen, polygonBlue, coordinates, winner);
+            Card newCard = new Card(_backgroundRed, _backgroundGreen, _backgroundBlue, _polygonRed, _polygonGreen, _polygonBlue, _coordinates, winner);
             
+            allCards[newCard.getAddressID()]=true;
+            return newCard;
         }
         
         function getListOfFights()  public constant returns (Fight[]) {
@@ -77,18 +84,16 @@ contract Fight {
             approverCard = _card;
             
             if(fight()){
-                //generation d'une carte
+                bookmaker.generateNewCard(provoker, provokerCard, approverCard);
             }
-        
-            
-            
         }
         else{
-            return;
+            bookmaker.generateNewCard(approver, provokerCard, approverCard);
         }
     }
     
-    function fight() private returns(bool) {
+    function fight() private view returns(bool)  {
+        
 	uint8 score;
         if(provokerCard.getBackgroundRed() > approverCard.getBackgroundGreen()){
 		score=score+1;

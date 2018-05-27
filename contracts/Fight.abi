@@ -1,0 +1,1 @@
+[{"inputs":[{"name":"_provoker","type":"address"},{"name":"_card","type":"address"},{"name":"_bookmaker","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]
