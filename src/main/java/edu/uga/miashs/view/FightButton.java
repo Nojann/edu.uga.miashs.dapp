@@ -23,6 +23,9 @@ public class FightButton extends Button{
 		
 	}
 	
+	/**
+	 * get the fight of the button.
+	 * */
 	public Fight getFight() {
 		return this.fight;
 	}

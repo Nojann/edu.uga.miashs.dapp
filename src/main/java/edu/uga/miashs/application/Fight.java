@@ -17,14 +17,22 @@ public class Fight {
 		this.bet = price;
 	}
 
+	/**
+	 * @return return the id of the fight contract
+	 * */
 	public String getId() {
 		return id;
 	}
-
+	/**
+	 * @return return the card used in this fight
+	 * */
 	public Card getCard() {
 		return card;
 	}
 
+	/**
+	 * @return return the amount of the bet.
+	 * */
 	public int getBet() {
 		return bet;
 	}

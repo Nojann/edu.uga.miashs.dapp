@@ -36,19 +36,32 @@ public class Card {
 //	}
 
 	
-	
+	/**
+	 * @return : return the id of the card
+	 * */
 	public String getId() {
 		return this.id;
 	}
-
+	
+	/**
+	 * @return : return the name of the card
+	 * */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * @return : return int table, contains red, green 
+	 * and blue color of the background card.
+	 * */
 	public int[] getRGBBGColor() {
 		return this.rgbBGColor;
 	}
 	
+	/**
+	 * @return : return int table, contains red, green 
+	 * and blue color of the card form.
+	 * */
 	public int[] getRGBINColor() {
 		return this.rgbINColor;
 	}

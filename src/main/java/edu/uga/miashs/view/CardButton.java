@@ -33,6 +33,9 @@ public class CardButton extends Button{
 		this.setAlignment(Pos.BASELINE_LEFT);
 	}
 	
+	/**
+	 * get the card, link to the button.
+	 * */
 	public Card getCard(){
 		return this.card;
 	}

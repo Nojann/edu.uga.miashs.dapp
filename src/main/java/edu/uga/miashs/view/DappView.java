@@ -98,41 +98,72 @@ public class DappView {
 	}
 	
 	/*--------------------	shortcut / Display  --------------------*/
+	/**
+	 * Fix the size of the pane.
+	 * @param pane, pane width, pane height
+	 * */
 	private void setPaneSize(Pane n, double width, double height) {
 		n.setMaxSize(width, height);
 		n.setMinSize(width, height);
 		n.setPrefSize(width, height);
 	}
 	
+	/**
+	 * Clear the details section and add Node(s). 
+	 * @param Node...
+	 * */
 	private void clearAndAddToDetails(Node...nodes) {
 		this.details.getChildren().clear();
 		this.details.getChildren().addAll(nodes);
 	}
 	
+	/**
+	 * Clear details and user card section.
+	 * */
 	public void clearCards() {
 		this.details.getChildren().clear();
 		this.listOfCard.getChildren().clear();
 	}
 	
+	/**
+	 * Clear details and all list of trades section
+	 * */
 	public void clearTrades() {
 		this.details.getChildren().clear();
 		this.listOfAllTrades.getChildren().clear();
 		this.listOfMyTrades.getChildren().clear();
 	}
+	
+	/**
+	 * Clear details and all list of fight section
+	 * */
 	public void clearFights() {
 		this.details.getChildren().clear();
 		this.listOfAllFights.getChildren().clear();
 		this.listOfMyFights.getChildren().clear();
 	}
 	
+	/**
+	 * log
+	 * @param log
+	 * */
 	public void log(String log) {
 		this.log.setText(log);
 	}
 	
+	/**
+	 * Display the new amount of token.
+	 * @param number of tokens
+	 * */
 	public void displayTokens(int tokens) {
 		this.tokens.setText(""+tokens);
 	}
 	
+	/**
+	 * Draw the card in AnchorPane
+	 * @param Card to draw
+	 * @return AnchorPane, contain drawing card
+	 * */
 	private AnchorPane cardPanel(Card card) {
 		AnchorPane p = new AnchorPane();
 		Rectangle bg = new Rectangle(100, 100);
@@ -146,6 +177,10 @@ public class DappView {
 	}
 
 	/*--------------------	new Buttons --------------------*/
+	/**
+	 * Create new user fight button
+	 * @param Fight
+	 * */
 	public void newUserFightButton(Fight fight) {
 		FightButton btn = new FightButton(fight);
 		this.myFightsButtonArray.add(btn);
@@ -153,6 +188,10 @@ public class DappView {
 		this.defaultMyFightButtonEvent(btn);
 	}
 	
+	/**
+	 * Create new user trade button
+	 * @param Trade
+	 * */
 	public void newUserTradeButton(Trade trade) {
 		TradeButton btn = new TradeButton(trade);
 		this.myTradesButtonArray.add(btn);
@@ -160,13 +199,21 @@ public class DappView {
 		this.defaultMyTradeButtonEvent(btn);
 	}
 	
-	public void newUserCardButton(final Card card){
+	/**
+	 * Create new user card button
+	 * @param Card
+	 * */
+	public void newUserCardButton(Card card){
 		CardButton btn = new CardButton(card);
 		this.cardsButtonArray.add(btn);
 		this.listOfCard.getChildren().add(btn);
 		defaultCardButtonEvent(btn);
 	}
 	
+	/**
+	 * Create new other trade button
+	 * @param Trad
+	 * */
 	public void newOthersTradeButton(Trade trade) {
 		TradeButton btn = new TradeButton(trade);
 		this.othersTradesButtonArray.add(btn);
@@ -174,6 +221,10 @@ public class DappView {
 		this.defaultOtherTradeButtonEvent(btn);
 	}
 	
+	/**
+	 * Create new other fight button
+	 * @param Fight
+	 * */
 	public void newOthersFightButton(Fight fight) {
 		FightButton btn = new FightButton(fight);
 		this.othersFightsButtonArray.add(btn);
@@ -182,6 +233,9 @@ public class DappView {
 	}
 	
 	/*--------------------	FXML Buttons --------------------*/
+	/**
+	 * Button action of "New Trade button", create new trade.
+	 * */
 	@FXML
 	private void newTradeButtonAction() {
 		for(CardButton card : this.cardsButtonArray) {
@@ -192,12 +246,18 @@ public class DappView {
 		details.getChildren().clear();
 	}
 	
+	/**
+	 * Button action of "Refresh Trades button", refresh all trades.
+	 * */
 	@FXML 
 	private void refreshTradesButtonAction() {
 		this.log.setText("Refresh Trades");
 		this.core.refreshTrades();
 	}
 	
+	/**
+	 * Button action of "New Fight button", create new trade.
+	 * */
 	@FXML 
 	private void newFightButtonAction() {
 		for(CardButton card : this.cardsButtonArray) {
@@ -208,6 +268,9 @@ public class DappView {
 		details.getChildren().clear();
 	}
 	
+	/**
+	 * Button action of "Refresh Fights button", refresh all fights.
+	 * */
 	@FXML 
 	private void refreshFightsButtonAction() {
 		this.log.setText("Refresh Fights");
@@ -215,6 +278,10 @@ public class DappView {
 	}
 
 	/*--------------------	default Buttons Event Action --------------------*/
+	/**
+	 * Fix the default action event to card button
+	 * @param CardButton
+	 * */
 	private void defaultCardButtonEvent(final CardButton cardButtons) {
 		cardButtons.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -229,6 +296,10 @@ public class DappView {
 		});
 	}
 	
+	/**
+	 * Fix the default action event to user trade button.
+	 * @param TradeButton
+	 * */
 	private void defaultMyTradeButtonEvent(final TradeButton tradeButtons) {
 		tradeButtons.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -243,6 +314,10 @@ public class DappView {
 		});
 	}
 	
+	/**
+	 * Fix the default action event to user fight button
+	 * @param FightButton
+	 * */
 	private void defaultMyFightButtonEvent(final FightButton fightButtons) {
 		fightButtons.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -257,6 +332,10 @@ public class DappView {
 		});
 	}
 
+	/**
+	 * Fix the default action event to other player trade button.
+	 * @param TradeButton
+	 * */
 	private void defaultOtherTradeButtonEvent(final TradeButton tradeButtons) {
 		tradeButtons.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -282,6 +361,10 @@ public class DappView {
 		});
 	}
 	
+	/**
+	 * Fix the default action event to other player fight button.
+	 * @param FightButton
+	 * */
 	private void defaultOtherFightButtonEvent(final FightButton fightButtons) {
 		fightButtons.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
@@ -306,6 +389,9 @@ public class DappView {
 	}
 
 	/*--------------------	default Buttons Event Action For All--------------------*/
+	/**
+	 * Fix the default action event of all buttons.
+	 * */
 	private void defaultEventForAllButtons() {
 		for(final CardButton cardButton : this.cardsButtonArray) {
 			defaultCardButtonEvent(cardButton);
@@ -324,6 +410,9 @@ public class DappView {
 		}
 	}
 	
+	/**
+	 * remove action event of all buttons.
+	 * */
 	private void noEventForAllButtons() {
 		for(final TradeButton tradeButton : this.myTradesButtonArray) {
 			tradeButton.setOnAction(null);
@@ -342,6 +431,9 @@ public class DappView {
 		}
 	}
 	
+	/**
+	 * remove action event of all buttons except user card buttons.
+	 * */
 	private void noEventForAllButtonsExceptCardButtons() {
 		for(final TradeButton tradeButton : this.myTradesButtonArray) {
 			tradeButton.setOnAction(null);
@@ -359,6 +451,9 @@ public class DappView {
 	
 	/*--------------------	Buttons Events --------------------*/
 	/*--------------------	New Trade --------------------*/
+	/**
+	 * Event on user card when user clic on "new trade" button.
+	 * */
 	private EventHandler<ActionEvent> selectNewTradeCardEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -385,6 +480,9 @@ public class DappView {
 		}
 	};
 	
+	/**
+	 * Action of "validation" button when user select card during the new trade action.
+	 * */
 	private EventHandler<ActionEvent> tradeValidationEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -407,6 +505,9 @@ public class DappView {
 		}
 	};	
 	
+	/**
+	 * Action of "yes" button and the last action of the validation of new trade.
+	 * */
 	private EventHandler<ActionEvent> yesTradeEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -418,6 +519,9 @@ public class DappView {
 	};
 
 	/*-------------------- New Fight --------------------*/
+	/**
+	 * Event on user card when user clic on "new fight" button.
+	 * */
 	private EventHandler<ActionEvent> selectNewFightCardEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -444,6 +548,9 @@ public class DappView {
 		}
 	};
 	
+	/**
+	 * Action of "validation" button when user select card during the new fight action.
+	 * */
 	private EventHandler<ActionEvent> newFightValidationEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -466,6 +573,9 @@ public class DappView {
 		}
 	};	
 	
+	/**
+	 * Action of "yes" button and the last action of the validation of new fight.
+	 * */
 	private EventHandler<ActionEvent> yesFightEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -477,6 +587,9 @@ public class DappView {
 	};
 	
 	/*-------------------- Buy Card --------------------*/
+	/**
+	 * Action of "buy card" button.
+	 * */
 	private EventHandler<ActionEvent> buyCardEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -494,6 +607,9 @@ public class DappView {
 		}
 	};	
 	
+	/**
+	 * Action of "yes" button and the last action to buy a new card.
+	 * */
 	private EventHandler<ActionEvent> yesBuyEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {
@@ -506,6 +622,9 @@ public class DappView {
 	
 	
 	/*-------------------- Accept fight --------------------*/
+	/**
+	 * Action of "accept" button of fight button.
+	 * */
 	private EventHandler<ActionEvent> acceptFightEvent = new EventHandler<ActionEvent>(){
 		@Override
 		public void handle(ActionEvent event) {

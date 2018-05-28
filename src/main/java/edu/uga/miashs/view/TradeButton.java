@@ -25,6 +25,9 @@ public class TradeButton extends Button{
 		
 	}
 	
+	/**
+	 * Get the trade of the button.
+	 */
 	public Trade getTrade(){
 		return this.trade;
 	}

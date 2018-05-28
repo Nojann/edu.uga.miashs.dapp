@@ -2,13 +2,11 @@ package main.java.edu.uga.miashs.application;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import javafx.stage.Stage;
 import main.java.edu.uga.miashs.view.CardButton;
 import main.java.edu.uga.miashs.view.DappView;
 
 public class DappCore {
-	//TODO: tokens! 
 	private DappView view;
 	private int myTokens;
 	private ArrayList<Card> myCardList;
@@ -52,17 +50,30 @@ public class DappCore {
 		
 	}
 	
+	/**
+	 * Used for adding a card in the list of user card and display.
+	 * @param ID of the card, name of the Card, table of background color (red green and blue)
+	 * and table of form color (red green and blue).
+	 * */
 	public void addUserCard(String id, String name, int[] bgColor, int[] inColor) {
 		Card card = new Card(id, name, bgColor, inColor);
 		this.myCardList.add(card);
 		this.view.newUserCardButton(card);
 	}
 	
+	/**
+	 * Used for adding a card in the list of user card and display.
+	 * @param Card
+	 * */
 	public void addUserCard(Card card) {
 		this.myCardList.add(card);
 		this.view.newUserCardButton(card);
 	}
 	
+	/**
+	 * Used for adding a trade in the list of user trade and display it.
+	 * @param Card and price
+	 * */
 	public void addMyTrade(Card card, int price){
 		Trade trade = new Trade(card, price);
 		this.usedCard.add(card);
@@ -70,6 +81,10 @@ public class DappCore {
 		this.view.newUserTradeButton(trade);
 	}
 	
+	/**
+	 * Used for adding a card in the list of user fight and display.
+	 * @param Card and bet
+	 * */
 	public void addMyFight(Card card, int bet){
 		Fight fight = new Fight(card, bet);
 		this.usedCard.add(card);
@@ -77,20 +92,32 @@ public class DappCore {
 		this.view.newUserFightButton(fight);
 	}
 	
+	/**
+	 * Used for adding a card in the list of 
+	 * trade proposed by other player and display.
+	 * @param Card and price
+	 * */
 	public void addOtherTrade(Card card, int price){
 		Trade trade = new Trade(card, price);
 		this.othersTradeList.add(trade);
 		this.view.newOthersTradeButton(trade);
 	}
 	
+	/**
+	 * Used for adding a card in the list of 
+	 * fight proposed by other player and display.
+	 * @param Card and bet
+	 * */
 	public void addOtherFight(Card card, int bet){
 		Fight fight = new Fight(card, bet);
 		this.othersFightList.add(fight);
 		this.view.newOthersFightButton(fight);
 	}
 	
-	
-	
+	/**
+	 * Check if new trade is possible and creat it
+	 * @param Card and price
+	 * */
 	public void newTrade(Card fixedCard, int price){
 		boolean exist = false;
 		for (Card card : this.usedCard) {
@@ -112,7 +139,11 @@ public class DappCore {
 		}
 		
 	}
-
+	
+	/**
+	 * Check if new fight is possible and creat it
+	 * @param Card and bet
+	 * */
 	public void newFight(Card fixedCard, int bet) {
 		boolean exist = false;
 		for (Card card : this.usedCard) {
@@ -134,6 +165,10 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * Check if buy the card proposed by the trade is possible and buy it
+	 * @param Trade
+	 * */
 	public void buyCard(Trade trade) {
 		if(trade.getPrice() < this.myTokens) {
 			this.refreshTokens(this.myTokens-trade.getPrice());
@@ -147,6 +182,10 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * Check if fighting is possible and accept the fight.
+	 * @param Fight and choosen card
+	 * */
 	public void fight(Fight fixedFight, Card fixedCard) {
 		boolean exist = false;
 		for (Card card : this.usedCard) {
@@ -171,15 +210,26 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * log
+	 * @param message
+	 * */
 	private void log(String log){
 		this.view.log(log);
 	}
 	
+	/**
+	 * Display the new amount of tokens.
+	 * @param nomber of tokens
+	 * */
 	private void refreshTokens(int tokens) {
 		this.myTokens = tokens;
 		this.view.displayTokens(myTokens);
 	}
 	
+	/**
+	 * Refresh the Card section
+	 * */
 	public void refreshCard() {
 		this.view.clearCards();
 		for (Card card : this.myCardList) {
@@ -187,6 +237,9 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * Refresh trade section
+	 * */
 	public void refreshTrades() {
 		this.view.clearTrades();
 		for (Trade trade : this.myTradeList) {
@@ -197,6 +250,9 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * Refresh fight section
+	 * */
 	public void refreshFight() {
 		this.view.clearFights();
 		for (Fight fight : this.myFightList) {
@@ -207,6 +263,9 @@ public class DappCore {
 		}
 	}
 	
+	/**
+	 * refresh all sections
+	 * */
 	public void refreshAll() {
 		this.refreshCard();
 		this.refreshFight();
