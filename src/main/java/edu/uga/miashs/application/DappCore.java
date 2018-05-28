@@ -29,8 +29,12 @@ public class DappCore {
 		
 		this.refreshTokens(1000);
 		
+		
+		
+		
 		int[][] bgColor = {{120,10,200}, {20,80,50}, {184,226,185}, {200,100,50}, {255,0,255}};
 		int[][] inColor = {{200,140,42}, {40,80,120}, {240,120,60}, {50,100,200}, {42,84,21}};
+
 		
 		this.addUserCard("0az52s4dqd23qsda4566", "Pas d'idée 1", bgColor[0], inColor[0]);
 		this.addUserCard("ve5g0s2n4l15d6s1152q", "Pas d'idée 2 : le retour", bgColor[1], inColor[1]);
