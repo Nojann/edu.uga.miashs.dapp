@@ -46,5 +46,8 @@ Voici un lien permettant une installation rapide ou configurable de java FX :
 https://www.eclipse.org/efxclipse/install.html .
 
 
+Autre : 
+Pour toute autre information, vous pouvez consulter le dossier compte rendu contenant des diagrammes pouvant aidé à la compréhension de la structure du code et de l'objectif de celui-ci.
+
 
 
