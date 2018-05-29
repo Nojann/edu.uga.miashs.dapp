@@ -42,6 +42,8 @@ sh web3j solidity generate --solidityTypes ../contracts/Card.bin ../contracts/Ca
 UTILISER L'IHM : 
 
 Pour utiliser la partie IHM de notre programme il est nécessaire d’avoir la librairie java FX.
+Voici un lien permettant une installation rapide ou configurable de java FX :
+https://www.eclipse.org/efxclipse/install.html .
 
 
 
